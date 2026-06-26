@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects · Saba Aghapour</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F7F4EF;
+  --warm:#FDFBF8;
+  --dark:#2C2B28;
+  --mid:#6B6860;
+  --light:#A8A59F;
+  --sage:#7A8C7E;
+  --rule:#E0DDD8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--warm);color:var(--dark);-webkit-font-smoothing:antialiased}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,251,248,0.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:60px;
+}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.04em;color:var(--dark);text-decoration:none}
+.nav-back{font-size:.75rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--dark)}
+.nav-back::before{content:"←";font-size:.85rem}
+
+/* HERO */
+.hero{
+  padding:120px 2.5rem 80px;
+  max-width:860px;
+  margin:0 auto;
+  border-bottom:1px solid var(--rule);
+}
+.eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:'';display:inline-block;width:40px;height:1px;background:var(--sage)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;color:var(--dark);margin-bottom:2rem}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero-desc{font-size:1rem;color:var(--mid);max-width:560px;line-height:1.85;margin-bottom:2.5rem}
+.hero-meta{display:flex;gap:3rem;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--light)}
+.meta-value{font-size:.9rem;color:var(--dark)}
+
+/* PROJECT CARDS */
+.projects{max-width:1100px;margin:0 auto;padding:5rem 2.5rem}
+
+.project-card{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  margin-bottom:4px;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  transition:box-shadow .3s;
+}
+.project-card:hover{box-shadow:0 20px 60px rgba(44,43,40,.1)}
+.project-card:hover .card-img img{transform:scale(1.04)}
+.project-card:hover .card-arrow{transform:translateX(4px)}
+
+.project-card.reverse{direction:rtl}
+.project-card.reverse > *{direction:ltr}
+
+.card-img{overflow:hidden;position:relative;aspect-ratio:4/3}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+
+.card-content{
+  padding:3.5rem;
+  background:var(--warm);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.card-eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.card-eyebrow::after{content:'';display:inline-block;width:24px;height:1px;background:var(--sage)}
+.card-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;line-height:1;color:var(--rule);letter-spacing:-.02em;margin-bottom:.5rem}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.2;color:var(--dark);margin-bottom:.5rem}
+.card-title em{font-style:italic;color:var(--sage)}
+.card-desc{font-size:.9rem;color:var(--mid);line-height:1.8;margin-bottom:2rem;max-width:380px}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2rem}
+.card-tag{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border:1px solid var(--rule);padding:4px 10px;background:var(--cream)}
+.card-link{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dark)}
+.card-arrow{transition:transform .25s;font-size:1rem}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--rule);max-width:1100px;margin:0 auto}
+
+/* FOOTER */
+footer{padding:3rem 2.5rem;text-align:center;border-top:1px solid var(--rule);margin-top:5rem}
+footer p{font-size:.78rem;color:var(--light)}
+footer a{color:var(--mid);text-decoration:none}
+footer a:hover{color:var(--dark)}
+
+@media(max-width:768px){
+  nav{padding:0 1.25rem}
+  .hero{padding:100px 1.25rem 60px}
+  .projects{padding:3rem 1.25rem}
+  .project-card,.project-card.reverse{grid-template-columns:1fr;direction:ltr}
+  .card-content{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://www.textilescorner.com">Saba's</a>
+  <a class="nav-back" href="https://www.textilescorner.com">Home</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">Studio SABAS</p>
+  <h1>Interior<br>Projects<br><em>DMV Area</em></h1>
+  <p class="hero-desc">A selection of residential and commercial projects spanning full scope renovation delivery, finish selection, and FF&E procurement. Each project reflects end-to-end design direction, material sourcing, and vendor coordination.</p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Location</span>
+      <span class="meta-value">DMV Area</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Scope</span>
+      <span class="meta-value">Residential · Commercial</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Services</span>
+      <span class="meta-value">Design · Procurement · Coordination</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT CARDS -->
+<div class="projects">
+
+  <!-- Card 1 — Full Renovation -->
+  <a class="project-card" href="https://6sabas6.github.io/portfolio-3/renovation-final-v12.html" target="_blank">
+    <div class="card-img">
+      <img src="https://i.imgur.com/fCOBbDZ.jpeg" alt="Full Condo Renovation DMV Area">
+    </div>
+    <div class="card-content">
+      <p class="card-eyebrow">Project 01</p>
+      <div class="card-num">01</div>
+      <h2 class="card-title">Full Condo<br>Renovation<br><em>DMV Area</em></h2>
+      <p class="card-desc">A complete residential renovation led end to end from design direction and material sourcing to vendor coordination and on-site sequencing across multiple trades.</p>
+      <div class="card-tags">
+        <span class="card-tag">FF&amp;E Procurement</span>
+        <span class="card-tag">LVP Flooring</span>
+        <span class="card-tag">Tile</span>
+        <span class="card-tag">Project Delivery</span>
+        <span class="card-tag">Full Scope</span>
+      </div>
+      <div class="card-link">View Project <span class="card-arrow">→</span></div>
+    </div>
+  </a>
+
+  <div style="height:4px"></div>
+
+  <!-- Card 2 — Finish Selection -->
+  <a class="project-card reverse" href="https://6sabas6.github.io/portfolio-5/finish-selection-v9.html" target="_blank">
+    <div class="card-img">
+      <img src="https://i.imgur.com/2xCqwDd.jpeg" alt="Finish Selection Residential Projects DMV">
+    </div>
+    <div class="card-content">
+      <p class="card-eyebrow">Project 02</p>
+      <div class="card-num">02</div>
+      <h2 class="card-title">Finish Selection<br>Residential Projects<br><em>DMV Area</em></h2>
+      <p class="card-desc">Material specification and finish coordination across 10 residential projects spanning contractor accounts, homeowner renovations, and realtor driven resale work.</p>
+      <div class="card-tags">
+        <span class="card-tag">Material Specification</span>
+        <span class="card-tag">Tile</span>
+        <span class="card-tag">Stone</span>
+        <span class="card-tag">Contractor Accounts</span>
+        <span class="card-tag">Resale</span>
+      </div>
+      <div class="card-link">View Project <span class="card-arrow">→</span></div>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  <p><a href="https://www.textilescorner.com">← Back to Portfolio</a> &nbsp;·&nbsp; © Saba Aghapour · Studio SABAS</p>
+</footer>
+
+</body>
+</html>
